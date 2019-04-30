@@ -31,12 +31,13 @@ public class Bullet : MonoBehaviour {
         }
         CheckDestroy();
 	}
+
     public void MoveYouBullet(Vector2 direction)
     {
         oriPos = transform.position;
         dir = direction;
         isMoving = true;
-        Debug.Log(dir);
+        //Debug.Log(dir);
     }
 
     private void CheckDestroy()
@@ -45,6 +46,14 @@ public class Bullet : MonoBehaviour {
         {
             Destroy(gameObject);
         } 
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<Enemy>().health -= 10f;
+        }
+        Destroy(gameObject);
     }
 }

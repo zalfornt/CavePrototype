@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
+
+    public Text healthText;
 
     private float speed = 10f;
     public GameObject bullet;
@@ -23,6 +26,7 @@ public class Player : MonoBehaviour {
 	void Update () {
         Move();
         Shoot();
+        UpdateHealth();
     }
 
     public void Shoot()
@@ -45,6 +49,10 @@ public class Player : MonoBehaviour {
         }
 
         transform.Translate(movement * speed * Time.deltaTime);
+    }
 
+    private void UpdateHealth()
+    {
+        healthText.text = health.ToString();
     }
 }
