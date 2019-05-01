@@ -14,10 +14,12 @@ public class Player : MonoBehaviour {
     private Vector2 latestDir;
 
     public float health = 100f;
-    
+
+    public int killCount;
 
     // Use this for initialization
     void Start () {
+        killCount = 0;
         latestDir = Vector2.up;
         rb = GetComponent<Rigidbody2D>();
 	}

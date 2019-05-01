@@ -37,11 +37,11 @@ public class EnemyBullet : MonoBehaviour
     }
     private void CheckDestroy()
     {
-        Debug.Log(transform.position);
-        Debug.Log(latestPlayerPos);
+        //Debug.Log(transform.position);
+        //Debug.Log(latestPlayerPos);
         if (transform.position == latestPlayerPos)
         {
-            Debug.Log("gae");
+            //Debug.Log("gae");
             Destroy(gameObject);
         }
     }

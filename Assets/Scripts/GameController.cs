@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public GameObject[] spawners;
     public GameObject enemy;
+    public GameObject player;
+    public GameObject loseTextObject;
+
+    public Text killCountText;
 
     private Vector2 spawnLocation;
 
@@ -21,14 +26,17 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         spawnStart = true;
         countdownTime = 5f;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
         Restart();
+        UpdateKillCount();
         if (spawnStart)
         {
             StartCoroutine("SpawnWave");
@@ -49,6 +57,8 @@ public class GameController : MonoBehaviour
                 return;
             }
         }
+
+        CheckPlayer();
     }
 
     private void Restart()
@@ -89,5 +99,19 @@ public class GameController : MonoBehaviour
         }
 
         enemyNum++;
+    }
+
+    private void CheckPlayer()
+    {
+        if(player.GetComponent<Player>().health <= 0)
+        {
+            Time.timeScale = 0;
+            loseTextObject.SetActive(true);
+        }
+    }
+
+    private void UpdateKillCount()
+    {
+        killCountText.text = "Kill Count: " + player.GetComponent<Player>().killCount;
     }
 }

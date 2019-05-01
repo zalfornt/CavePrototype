@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 894301741175661893}
   - component: {fileID: 7203771497138759197}
   - component: {fileID: 894301741175661894}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8efd881287bf9bb4aa022bbc9bc6ca26, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -151,5 +151,6 @@ MonoBehaviour:
   health: 50
   cooldownTime: 2
   cooldownTimer: 0
-  attackDistance: 1.05
-  enemyType: 1
+  attackDistance: 3
+  enemyType: 2
+  isAttacking: 0
