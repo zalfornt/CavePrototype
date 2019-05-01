@@ -33,10 +33,9 @@ public class Player : MonoBehaviour {
 
     public void Shoot()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetMouseButtonDown(0))
         {
-            var newBullet = Instantiate(bullet, transform.position,Quaternion.identity);
-            newBullet.GetComponent<Bullet>().MoveYouBullet(latestDir);
+            Instantiate(bullet, transform.position,Quaternion.identity);
         }
     }
     public void Move()
@@ -44,11 +43,7 @@ public class Player : MonoBehaviour {
         float yMove = Input.GetAxisRaw("Vertical");
         float xMove = Input.GetAxisRaw("Horizontal");
         var movement = new Vector2(xMove, yMove);
-
-        if(movement != Vector2.zero)
-        {
-            latestDir = movement;
-        }
+        
 
         transform.Translate(movement * speed * Time.deltaTime);
     }

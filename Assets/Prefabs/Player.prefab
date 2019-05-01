@@ -144,7 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 6634725912977485186}
   bullet: {fileID: 3710413794300748962, guid: a199dcbe09971334fb4a55b173c990df, type: 3}
+  bulletSpawn: {fileID: 0}
   health: 100
+  killCount: 0
 --- !u!1 &6634725912398182465
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,25 +20,26 @@ public class Bullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        oriPos = transform.position;
         speed = 15f;
+        dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        dir.z = 0;
+        dir.Normalize();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (isMoving)
-        {
-            transform.Translate(dir * speed * Time.deltaTime);
-        }
+        transform.Translate(dir * speed * Time.deltaTime);
         CheckDestroy();
 	}
 
-    public void MoveYouBullet(Vector2 direction)
-    {
-        oriPos = transform.position;
-        dir = direction;
-        isMoving = true;
-        //Debug.Log(dir);
-    }
+    //public void MoveYouBullet(Vector2 direction)
+    //{
+        
+    //    dir = direction;
+    //    isMoving = true;
+    //    //Debug.Log(dir);
+    //}
 
     private void CheckDestroy()
     {
