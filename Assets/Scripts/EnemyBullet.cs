@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     public Transform player;
     public Vector2 CurrDir { get; set; }
-    private Vector2 latestPlayerPos; 
+    private Vector3 latestPlayerPos; 
     private Vector3 oriPos;
     public float speed;
     private float range = 5f;
@@ -15,7 +15,7 @@ public class EnemyBullet : MonoBehaviour
     {
         oriPos = transform.position;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        latestPlayerPos = new Vector2(player.position.x, player.position.y);
+        latestPlayerPos = new Vector3(player.position.x, player.position.y, player.position.z);
     }
     // Update is called once per frame
     void Update()
@@ -25,7 +25,7 @@ public class EnemyBullet : MonoBehaviour
     }
     public void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, latestPlayerPos, speed * Time.deltaTime);       
+        transform.position = Vector3.MoveTowards(transform.position, latestPlayerPos, speed * Time.deltaTime);       
     }
     private void OnTriggerEnter2D(Collider2D c)
     {
@@ -37,10 +37,12 @@ public class EnemyBullet : MonoBehaviour
     }
     private void CheckDestroy()
     {
-        if (Vector3.Distance(oriPos, transform.position) != range)
+        Debug.Log(transform.position);
+        Debug.Log(latestPlayerPos);
+        if (transform.position == latestPlayerPos)
         {
             Debug.Log("gae");
-            Destroy(gameObject,2f);
+            Destroy(gameObject);
         }
     }
 }
