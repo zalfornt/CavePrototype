@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 894301741175661894}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,9 +146,10 @@ MonoBehaviour:
     type: 3}
   enemyBullet: {fileID: 9086037729869641099, guid: 7df551eede79d684ea16a36964f84ee9,
     type: 3}
+  gameController: {fileID: 0}
   speed: 2
   health: 50
   cooldownTime: 2
   cooldownTimer: 0
-  attackDistance: 0
-  enemyType: 0
+  attackDistance: 1.05
+  enemyType: 1

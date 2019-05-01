@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     public Transform player;
     public GameObject rangedWeapon;
     public GameObject enemyBullet;
+    public GameObject gameController;
 
     public float speed = 2;
     public float health = 50f;
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        gameController = GameObject.FindWithTag("GameController");
 	}
 	
 	// Update is called once per frame
@@ -63,6 +65,12 @@ public class Enemy : MonoBehaviour {
         if(health <= 0)
         {
             Destroy(gameObject);
+            gameController.GetComponent<GameController>().enemyNum--;
         }
+    }
+
+    public void ChangeColor()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.magenta;
     }
 }
