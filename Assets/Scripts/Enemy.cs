@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
 
     public Transform player;
     public GameObject rangedWeapon;
+    public GameObject enemyBullet;
 
     public float speed = 2;
     public float health = 50f;
@@ -50,6 +51,7 @@ public class Enemy : MonoBehaviour {
                 case 1:
                     break;
                 case 2:
+                    var newBullet = Instantiate(enemyBullet, transform.position, Quaternion.identity);
                     break;
             }
             cooldownTimer = cooldownTime;

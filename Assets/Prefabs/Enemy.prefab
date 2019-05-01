@@ -144,6 +144,8 @@ MonoBehaviour:
   player: {fileID: 0}
   rangedWeapon: {fileID: 9086037729869641099, guid: 7df551eede79d684ea16a36964f84ee9,
     type: 3}
+  enemyBullet: {fileID: 9086037729869641099, guid: 7df551eede79d684ea16a36964f84ee9,
+    type: 3}
   speed: 2
   health: 50
   cooldownTime: 2
