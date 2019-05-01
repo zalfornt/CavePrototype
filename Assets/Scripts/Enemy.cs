@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour {
     public GameObject enemyBullet;
     public GameObject gameController;
 
+    public BoxCollider2D largeCollider;
+
     private Vector3 difference;
     private Vector3 oriPosAttack;
 
@@ -78,17 +80,15 @@ public class Enemy : MonoBehaviour {
     private void MeleeAttack()
     {
         Debug.Log("melee attack start");
-        oriPosAttack = transform.position;
-        difference = oriPosAttack - player.position;
         isAttacking = true;
+        largeCollider.enabled = true;
     }
 
     private void MeleeAttackMovement()
     {
         Debug.Log("melee attack move");
-        Vector2.MoveTowards(transform.position, player.position, speed*2);
-        isAttacking = false;
-        cooldownTimer = cooldownTime;
+        Vector2.MoveTowards(transform.position, player.position, 2);
+        
     }
 
     private void CheckDeath()
@@ -108,11 +108,14 @@ public class Enemy : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player") && isAttacking)
+        Debug.Log("collision enter");
+        if (collision.gameObject.CompareTag("Player") && isAttacking)
         {
-            Debug.Log("melee attack hit");
+            Debug.Log("melee attack hit enter");
             player.GetComponent<Player>().health -= 5;
-            Vector2.MoveTowards(transform.position, oriPosAttack, speed*2);
+            largeCollider.enabled = false;
+            isAttacking = false;
+            cooldownTimer = cooldownTime;
         }
     }
 }
